@@ -2,11 +2,13 @@ src = $(wildcard *.cpp)
 obj = $(src:.cpp=.o)
 exe = inplace_string_reversal
 
-CC = g++
-CXXFLAGS = --std=c++2a -I../ext/catch2/include -g
+CC = clang++-11
+CXX = clang++-11
+CXXFLAGS = --std=c++2a -I../ext/catch2/include -g -stdlib=libc++
+LDFLAGS = -lc++abi -lc++
 
 $(exe): $(obj)
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 .PHONY = clean
 clean:
