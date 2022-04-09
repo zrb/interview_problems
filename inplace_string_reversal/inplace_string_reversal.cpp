@@ -2,8 +2,6 @@
 #include <string>
 #include <utility>
 
-#include <catch2/catch.hpp>
-
 namespace zrb::interview_problems
 {
 
@@ -31,7 +29,8 @@ std::string reverse(char const * s)
 
 using namespace zrb::interview_problems;
 
-//  Can't use static_assert until we get constexpr std::string in c++20
+#include <catch2/catch.hpp>
+
 TEST_CASE("inplace string reversal", "[inplace_string_reversal]") {
     REQUIRE(reverse("") == "");  //  empty
     REQUIRE(reverse("a") == "a");  //  1 char
